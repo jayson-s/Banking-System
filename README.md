@@ -23,7 +23,7 @@ A C++ project simulating a basic banking system. This project includes functiona
 1. **Clone the repository**
    ```sh
    git clone https://github.com/jayson-s/Banking-System.git
-   cd Banking-System
+   cd Banking_System
 
 2. **Build the project**
    ```sh
