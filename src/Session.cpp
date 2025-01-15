@@ -28,8 +28,8 @@ std::string Session::login() {
     std::cout << "Enter password: ";
     std::cin >> password;
 
-    // Validate credentials from a file (e.g., Users.txt)
-    std::ifstream userFile("Users.txt");
+    // Validate credentials from file
+    std::ifstream userFile("data/CurrentBankAccounts.txt");
     if (!userFile.is_open()) {
         throw std::runtime_error("Error: Unable to open user file for authentication.");
     }

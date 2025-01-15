@@ -57,7 +57,7 @@ void AdminTask::performAdminTask() {
 }
 
 void AdminTask::saveAccountToFile(const std::string& accountDetails) const {
-    std::ofstream accounts("CurrentBankAccounts.txt", std::ios::app);
+    std::ofstream accounts("data/CurrentBankAccounts.txt", std::ios::app);
     if (!accounts.is_open()) {
         throw std::runtime_error("Error: Unable to open accounts file for writing.");
     }
@@ -65,7 +65,7 @@ void AdminTask::saveAccountToFile(const std::string& accountDetails) const {
 }
 
 void AdminTask::deleteAccountFromFile(const std::string& accountNumber) const {
-    std::ifstream inputFile("CurrentBankAccounts.txt");
+    std::ifstream inputFile("data/CurrentBankAccounts.txt");
     std::ofstream tempFile("TempAccounts.txt");
     if (!inputFile.is_open() || !tempFile.is_open()) {
         throw std::runtime_error("Error: Unable to process accounts file.");
@@ -87,7 +87,7 @@ void AdminTask::deleteAccountFromFile(const std::string& accountNumber) const {
     inputFile.close();
     tempFile.close();
     if (accountDeleted) {
-        std::rename("TempAccounts.txt", "CurrentBankAccounts.txt");
+        std::rename("TempAccounts.txt", "data/CurrentBankAccounts.txt");
     } else {
         std::remove("TempAccounts.txt");
         throw std::runtime_error("Error: Account not found.");

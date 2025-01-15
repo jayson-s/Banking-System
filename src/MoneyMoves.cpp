@@ -87,7 +87,7 @@ void MoneyMoves::makeTransaction() {
 }
 
 void MoneyMoves::logTransaction(const std::string& transactionDetails) {
-    std::ofstream transactionFile("BankAccountTransaction.txt", std::ios::app);
+    std::ofstream transactionFile("data/BankAccountTransaction.txt", std::ios::app);
     if (!transactionFile.is_open()) {
         throw std::runtime_error("Error: Unable to open transaction file for writing.");
     }
