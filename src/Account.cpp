@@ -28,18 +28,18 @@ Account::Account(const std::string &number, const std::string &name)
     {
         std::istringstream stream(line);
         std::string accNumber, accName;
-        float balance;
-        bool disabled, studentPlan;
+        float fileBalance;
+        bool fileDisabled, fileStudentPlan;
 
         std::getline(stream, accNumber, ',');
         std::getline(stream, accName, ',');
-        stream >> balance >> disabled >> studentPlan;
+        stream >> fileBalance >> fileDisabled >> fileStudentPlan;
 
         if (accNumber == accountNumber && accName == accountHolderName)
         {
-            this->balance = balance;
-            this->disabled = disabled;
-            this->studentPlan = studentPlan;
+            balance = fileBalance;
+            disabled = fileDisabled;
+            studentPlan = fileStudentPlan;
             accountFound = true;
             break;
         }
@@ -70,6 +70,8 @@ void Account::createAccount(float initialBalance)
 // Update account balance in the file
 void Account::updateAccountBalance(float newBalance)
 {
+    balance = newBalance; // Update the in-memory balance
+
     std::ifstream inputFile("CurrentBankAccounts.txt");
     if (!inputFile.is_open())
     {
@@ -160,8 +162,30 @@ void Account::deleteAccount() {
     }
 }
 
-float Account::getBalance() const {
-    return balance;
+// Reload the balance from the file
+float Account::getBalance() {
+    std::ifstream accounts("CurrentBankAccounts.txt");
+    if (!accounts.is_open()) {
+        throw std::runtime_error("Error: Unable to open accounts file.");
+    }
+
+    std::string line;
+    while (std::getline(accounts, line)) {
+        std::istringstream stream(line);
+        std::string accNumber, accName;
+        float fileBalance;
+        bool disabled, studentPlan;
+
+        std::getline(stream, accNumber, ',');
+        std::getline(stream, accName, ',');
+        stream >> fileBalance >> disabled >> studentPlan;
+
+        if (accNumber == accountNumber && accName == accountHolderName) {
+            return fileBalance;
+        }
+    }
+
+    throw std::runtime_error("Error: Account not found.");
 }
 
 // Toggle the disabled status of an account
