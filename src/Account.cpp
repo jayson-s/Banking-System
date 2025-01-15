@@ -16,7 +16,7 @@ Account::Account(const std::string &name)
 Account::Account(const std::string &number, const std::string &name)
     : accountNumber(number), accountHolderName(name)
 {
-    std::ifstream accounts("CurrentBankAccounts.txt");
+    std::ifstream accounts("data/CurrentBankAccounts.txt");
     if (!accounts.is_open())
     {
         throw std::runtime_error("Error: Unable to open accounts file.");
@@ -59,7 +59,7 @@ void Account::createAccount(float initialBalance)
         throw std::invalid_argument("Error: Initial balance cannot be negative.");
     }
     balance = initialBalance;
-    std::ofstream accounts("CurrentBankAccounts.txt", std::ios::app);
+    std::ofstream accounts("data/CurrentBankAccounts.txt", std::ios::app);
     if (!accounts.is_open())
     {
         throw std::runtime_error("Error: Unable to open accounts file for writing.");
@@ -72,7 +72,7 @@ void Account::updateAccountBalance(float newBalance)
 {
     balance = newBalance; // Update the in-memory balance
 
-    std::ifstream inputFile("CurrentBankAccounts.txt");
+    std::ifstream inputFile("data/CurrentBankAccounts.txt");
     if (!inputFile.is_open())
     {
         throw std::runtime_error("Error: Unable to open accounts file.");
@@ -111,7 +111,7 @@ void Account::updateAccountBalance(float newBalance)
         throw std::runtime_error("Error: Account not found.");
     }
 
-    if (std::remove("CurrentBankAccounts.txt") != 0 || std::rename("TempAccounts.txt", "CurrentBankAccounts.txt") != 0)
+    if (std::remove("data/CurrentBankAccounts.txt") != 0 || std::rename("TempAccounts.txt", "data/CurrentBankAccounts.txt") != 0)
     {
         throw std::runtime_error("Error: Unable to update accounts file.");
     }
@@ -126,7 +126,7 @@ std::string Account::generateAccountNumber() const
 
 // Delete an account from the file
 void Account::deleteAccount() {
-    std::ifstream inputFile("CurrentBankAccounts.txt");
+    std::ifstream inputFile("data/CurrentBankAccounts.txt");
     if (!inputFile.is_open()) {
         throw std::runtime_error("Error: Unable to open accounts file.");
     }
@@ -157,14 +157,14 @@ void Account::deleteAccount() {
         throw std::runtime_error("Error: Account not found.");
     }
 
-    if (std::remove("CurrentBankAccounts.txt") != 0 || std::rename("TempAccounts.txt", "CurrentBankAccounts.txt") != 0) {
+    if (std::remove("data/CurrentBankAccounts.txt") != 0 || std::rename("TempAccounts.txt", "data/CurrentBankAccounts.txt") != 0) {
         throw std::runtime_error("Error: Unable to update accounts file.");
     }
 }
 
 // Reload the balance from the file
 float Account::getBalance() const {
-    std::ifstream accounts("CurrentBankAccounts.txt");
+    std::ifstream accounts("data/CurrentBankAccounts.txt");
     if (!accounts.is_open()) {
         throw std::runtime_error("Error: Unable to open accounts file.");
     }

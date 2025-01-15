@@ -32,8 +32,8 @@ To build and run this project, ensure you have the following:
 
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/jayson-s/Banking-System.git
-   cd Banking-System
+   git clone https://github.com/jayson-s/BankingSystem.git
+   cd BankingSystem
 
 2. **Build the project**
    ```sh
