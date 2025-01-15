@@ -33,8 +33,16 @@ A C++ project simulating a basic banking system. This project includes functiona
 
 **Execute the main script**
   ```sh
-  ./main.sh
+  ./bin/banking_system
   ```
 
-### Usage:
-Follow the on-screen instructions to interact with the banking system.
+### Testing:
+
+**Run all tests using:**
+```sh
+   make test
+```
+Tests are located in the input/ directory:
+- in/: Input files for each operation.
+- out/: Expected output files.
+- eout/: Actual output files generated during testing.

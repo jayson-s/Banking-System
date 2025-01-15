@@ -4,5 +4,6 @@
         "string": "cpp",
         "vector": "cpp",
         "xstring": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/clang++"
 }
