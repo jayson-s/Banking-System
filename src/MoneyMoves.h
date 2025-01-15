@@ -4,6 +4,7 @@
 
 class MoneyMoves {
 public:
+    void makeTransaction();
     void withdrawal(const std::string& loggedInAs);
     void payBill(const std::string& loggedInAs);
     void transfer(const std::string& loggedInAs);

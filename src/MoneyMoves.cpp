@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "MoneyMoves.h"
 #include "Account.h"
 
@@ -110,4 +112,8 @@ void MoneyMoves::deposit(const std::string& loggedInAs) {
     std::ostringstream transactionDetails;
     transactionDetails << loggedInAs << ",deposit," << amount << "," << balance;
     logTransaction(transactionDetails.str());
+}
+
+bool MoneyMoves::validateDepositAmount(float amount) const {
+    return amount > 0; // A valid deposit amount must be positive
 }

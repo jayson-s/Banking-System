@@ -160,6 +160,10 @@ void Account::deleteAccount() {
     }
 }
 
+float Account::getBalance() const {
+    return balance;
+}
+
 // Toggle the disabled status of an account
 void Account::toggleDisabledAccount() {
     disabled = !disabled;

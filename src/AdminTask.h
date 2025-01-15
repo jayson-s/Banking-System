@@ -8,6 +8,7 @@ public:
     void deleteAccount(const std::string& loggedInAs);
     void disableAccount(const std::string& loggedInAs);
     void changePlan(const std::string& loggedInAs);
+    void performAdminTask();
 
 private:
     bool validateUserAsAdmin(const std::string& loggedInAs) const;
