@@ -57,7 +57,7 @@ Tests are located in the input/ directory:
 - out/: Actual output files generated during testing.
 - eout/: Expected output files.
 
-### Project Highlights:
+## Project Highlights
 
 - Advanced Design: Implements object-oriented programming principles, emphasizing scalability and modularity.
 - Real-World Applications: Simulates realistic banking operations, such as bill payments and fund transfers.
