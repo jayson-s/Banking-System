@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX = clang++
-CXXFLAGS = -std=c++17 -Wall -Wextra -I./src
+CXXFLAGS = -std=c++17 -Wall -Wextra -I./src -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk
 
 # Directories
 SRC_DIR = ./src

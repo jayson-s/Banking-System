@@ -44,5 +44,5 @@ A C++ project simulating a basic banking system. This project includes functiona
 ```
 Tests are located in the input/ directory:
 - in/: Input files for each operation.
-- out/: Expected output files.
-- eout/: Actual output files generated during testing.
+- out/: Actual output files generated during testing.
+- eout/: Expected output files.

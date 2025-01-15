@@ -121,3 +121,63 @@ std::string Account::generateAccountNumber() const
     static int counter = 1000;
     return "ACC" + std::to_string(counter++);
 }
+
+// Delete an account from the file
+void Account::deleteAccount() {
+    std::ifstream inputFile("CurrentBankAccounts.txt");
+    if (!inputFile.is_open()) {
+        throw std::runtime_error("Error: Unable to open accounts file.");
+    }
+
+    std::ofstream tempFile("TempAccounts.txt");
+    if (!tempFile.is_open()) {
+        throw std::runtime_error("Error: Unable to create temporary accounts file.");
+    }
+
+    std::string line;
+    bool accountDeleted = false;
+    while (std::getline(inputFile, line)) {
+        std::istringstream stream(line);
+        std::string accNumber;
+        std::getline(stream, accNumber, ',');
+
+        if (accNumber != accountNumber) {
+            tempFile << line << "\n";
+        } else {
+            accountDeleted = true;
+        }
+    }
+
+    inputFile.close();
+    tempFile.close();
+
+    if (!accountDeleted) {
+        throw std::runtime_error("Error: Account not found.");
+    }
+
+    if (std::remove("CurrentBankAccounts.txt") != 0 || std::rename("TempAccounts.txt", "CurrentBankAccounts.txt") != 0) {
+        throw std::runtime_error("Error: Unable to update accounts file.");
+    }
+}
+
+// Toggle the disabled status of an account
+void Account::toggleDisabledAccount() {
+    disabled = !disabled;
+    updateAccountBalance(balance); // Rewrites account data with updated status
+}
+
+// Toggle the account plan (e.g., student plan)
+void Account::togglePlan() {
+    studentPlan = !studentPlan;
+    updateAccountBalance(balance); // Rewrites account data with updated plan
+}
+
+// Check if the account is disabled
+bool Account::isDisabled() const {
+    return disabled;
+}
+
+// Check if the account is on a student plan
+bool Account::isStudentPlan() const {
+    return studentPlan;
+}
