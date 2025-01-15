@@ -163,7 +163,7 @@ void Account::deleteAccount() {
 }
 
 // Reload the balance from the file
-float Account::getBalance() {
+float Account::getBalance() const {
     std::ifstream accounts("CurrentBankAccounts.txt");
     if (!accounts.is_open()) {
         throw std::runtime_error("Error: Unable to open accounts file.");
