@@ -7,18 +7,18 @@ The Banking System is a C++ project simulating the core functionalities of a mod
 ## Features
 
 - Account Management:
-   • Create and delete accounts.
-   • Toggle account status (e.g., enable/disable).
-   • Switch between account types (e.g., standard or student plans).
+   - Create and delete accounts.
+   - Toggle account status (e.g., enable/disable).
+   - Switch between account types (e.g., standard or student plans).
 - Transaction Processing:
-   • Perform deposits, withdrawals, and fund transfers.
-   • Pay bills directly from accounts.
-   • Generate and log detailed transaction reports.
+   - Perform deposits, withdrawals, and fund transfers.
+   - Pay bills directly from accounts.
+   - Generate and log detailed transaction reports.
 - Data Management:
-   • Persistent file-based storage for accounts and transactions.
-   • Real-time updates ensure accurate balance tracking.
+   - Persistent file-based storage for accounts and transactions.
+   - Real-time updates ensure accurate balance tracking.
 - Error Handling:
-   • Robust input validation and error recovery mechanisms.
+   - Robust input validation and error recovery mechanisms.
 
 ## Getting Started
 
